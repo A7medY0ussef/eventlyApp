@@ -112,14 +112,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 buildProfilePhoto(isDark),
                 SizedBox(height: 16),
                 Text(
-                  providerAuth.user?.displayName ?? '',
+                  FirebaseAuth.instance.currentUser?.displayName ?? '',
                   style: isDark
                       ? AppStyles.nameProfileDark
                       : AppStyles.nameProfileLight,
                 ),
                 SizedBox(height: 4),
                 Text(
-                  providerAuth.user?.email ?? '',
+                  FirebaseAuth.instance.currentUser?.email ?? '',
                   style: isDark
                       ? AppStyles.emailProfileDark
                       : AppStyles.emailProfileLight,
@@ -168,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileOptionsWidget(
                   title: AppLocalizations.of(context)!.profile_logout,
                   onTap: () async {
-                    await FirebaseAuth.instance.signOut();
+                    await providerAuth.signOut();
                     if (!context.mounted) return;
                     Navigator.pushReplacementNamed(
                       context,

@@ -4,22 +4,26 @@ import 'package:evently/modules/auth/screens/login_screen.dart';
 import 'package:evently/modules/auth/screens/register_screen.dart';
 import 'package:evently/modules/auth/screens/reset_password_screen.dart';
 import 'package:evently/modules/layout/screens/layout_screen.dart';
-import 'package:evently/modules/splash/screens/splash_screen.dart';
 import 'package:evently/providers/app_language_provider.dart';
 import 'package:evently/providers/app_theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
 import 'modules/auth/manager/auth_provider.dart';
-import 'modules/layout/screens/home_screen.dart';
 import 'modules/onboarding/screens/onboarding_screen.dart';
+import 'modules/splash/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await GoogleSignIn.instance.initialize(
+    serverClientId:
+        '128229674562-gc652a2bg3qfdca15g0ckm1p8cr3osft.apps.googleusercontent.com',
+  );
   runApp(
     MultiProvider(
       providers: [
@@ -44,7 +48,7 @@ class EventlyApp extends StatelessWidget {
 
       initialRoute: AppRoutes.splashScreen,
       routes: {
-        AppRoutes.homeScreen: (context) => HomeScreen(),
+        AppRoutes.splashScreen: (context) => const SplashScreen(),
         AppRoutes.onboardingScreen: (context) => const OnboardingScreen(),
         AppRoutes.loginScreen: (context) => const LoginScreen(),
         AppRoutes.registerScreen: (context) => const RegisterScreen(),
@@ -59,7 +63,6 @@ class EventlyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.currentTheme,
-      home: SplashScreen(),
     );
   }
 }

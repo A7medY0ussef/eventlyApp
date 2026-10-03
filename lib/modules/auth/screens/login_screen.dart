@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../onboarding/widgets/elevated_button_widget.dart';
+import '../services/auth_service.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/google_elevated_button.dart';
 
@@ -235,7 +236,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 24),
                       GoogleElevatedButton(
                         title: l10n.login_googleButton,
-                        onTap: () {},
+                        onTap: () async {
+                          try {
+                            final result = await AuthService()
+                                .signInWithGoogle();
+                            if (result != null && context.mounted) {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                AppRoutes.layoutScreen,
+                              );
+                            }
+                          } catch (e) {
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(e.toString())),
+                              );
+                            }
+                          }
+                        },
                       ),
                     ],
                   ),

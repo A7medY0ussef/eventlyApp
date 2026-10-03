@@ -57,22 +57,24 @@ class DefaultFirebaseOptions {
     projectId: 'eventlyapp-4b748',
     storageBucket: 'eventlyapp-4b748.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAynfbf3x1y4B2cFysd5dQaeYLbzQYmA3o',
     appId: '1:128229674562:ios:9c55ba9b49d7fd226e67db',
     messagingSenderId: '128229674562',
     projectId: 'eventlyapp-4b748',
     storageBucket: 'eventlyapp-4b748.firebasestorage.app',
+    androidClientId: '128229674562-guupj4go99akshvq2ncdlobspuivh7v5.apps.googleusercontent.com',
+    iosClientId: '128229674562-8op0kapa1nkhk7f3u4nt0i1ts1hpkkor.apps.googleusercontent.com',
     iosBundleId: 'com.example.evently',
   );
-
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAynfbf3x1y4B2cFysd5dQaeYLbzQYmA3o',
     appId: '1:128229674562:ios:9c55ba9b49d7fd226e67db',
     messagingSenderId: '128229674562',
     projectId: 'eventlyapp-4b748',
     storageBucket: 'eventlyapp-4b748.firebasestorage.app',
+    androidClientId: '128229674562-guupj4go99akshvq2ncdlobspuivh7v5.apps.googleusercontent.com',
+    iosClientId: '128229674562-8op0kapa1nkhk7f3u4nt0i1ts1hpkkor.apps.googleusercontent.com',
     iosBundleId: 'com.example.evently',
   );
 

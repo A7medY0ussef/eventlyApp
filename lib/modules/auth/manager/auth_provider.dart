@@ -2,12 +2,13 @@ import 'package:evently/core/toast_service/toast.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../services/auth_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool isLoading = false;
-  late User? user;
+  User? user;
 
   Future<void> createAccount({
     required String email,
@@ -84,6 +85,13 @@ class AuthProvider extends ChangeNotifier {
       Toast.show(title: e.toString(), context: context, type: ToastType.error);
     }
     isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> signOut() async {
+    await GoogleSignIn.instance.signOut();
+    await FirebaseAuth.instance.signOut();
+    user = null;
     notifyListeners();
   }
 }
