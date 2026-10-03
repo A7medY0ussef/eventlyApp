@@ -1,0 +1,73 @@
+{
+  "onboarding_skip": "Skip",
+  "onboarding_title": "Personalize Your Experience",
+  "onboarding_subtitle": "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+  "onboarding_labelLanguage": "Language",
+  "onboarding_langEnglish": "English",
+  "onboarding_langArabic": "Arabic",
+  "onboarding_labelTheme": "Theme",
+  "onboarding_btnStart": "Let’s start",
+
+  "onboarding_findEvents_title": "Find Events That Inspire You",
+  "onboarding_findEvents_subtitle": "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
+
+  "onboarding_eventPlanning_title": "Effortless Event Planning",
+  "onboarding_eventPlanning_subtitle": "Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
+
+  "onboarding_connectFriends_title": "Connect with Friends & Share Moments",
+  "onboarding_connectFriends_subtitle": "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
+
+  "onboarding_next": "Next",
+  "onboarding_getStarted": "Get started",
+
+  "login_title": "Login to your account",
+  "login_forgetPassword": "Forget Password?",
+  "login_button": "Login",
+  "login_noAccountText": "Don't have an account ? ",
+  "login_signupLink": "Signup",
+  "login_googleButton": "Login with Google",
+
+  "signup_title": "Create your account",
+  "signup_nameHint": "Enter your name",
+  "signup_confirmPasswordHint": "Confirm your password",
+  "signup_button": "Sign up",
+  "signup_haveAccountText": "Already have an account? ",
+  "signup_loginLink": "Login",
+  "signup_googleButton": "Sign up with Google",
+
+  "auth_welcomeMessage": "Welcome",
+  "auth_welcomeBackMessage": "Welcome Back ",
+
+  "auth_emailHint": "Enter your email",
+  "auth_passwordHint": "Enter your password",
+  "auth_or": "Or",
+
+  "validation_emailRequired": "Email is required",
+  "validation_emailInvalid": "Enter a valid email",
+  "validation_passwordRequired": "Password is required",
+  "validation_passwordTooShort": "Password must be at least 6 characters",
+  "validation_nameRequired": "Name is required",
+  "validation_nameTooShort": "Name must be at least 3 characters",
+  "validation_confirmPasswordRequired": "Please confirm your password",
+  "validation_passwordsDoNotMatch": "Passwords do not match",
+
+  "auth_errorWeakPassword": "The password provided is too weak.",
+  "auth_errorEmailAlreadyInUse": "The account already exists for that email.",
+  "auth_errorUserNotFound": "No user found for that email.",
+  "auth_errorWrongPassword": "Wrong password or email.",
+
+  "auth_resetPassword": "Reset password",
+  "auth_showYourEmail": "Check your email",
+  "auth_invalidMail": "Invalid Email",
+
+  "profile_darkMode": "Dark mode",
+  "profile_language": "Language",
+  "profile_logout": "Logout",
+  "profile_galleryProfile": "Gallery",
+  "profile_galleryCamera": "Camera",
+
+  "nav_home": "Home",
+  "nav_favorite": "Favorite",
+  "nav_profile": "Profile"
+
+}
