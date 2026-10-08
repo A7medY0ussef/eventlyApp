@@ -25,6 +25,7 @@ dependencies:
   firebase_auth: ^6.7.0
   image_picker: ^1.2.3
   google_sign_in: ^7.2.0
+  cloud_firestore: ^6.10.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +42,7 @@ flutter:
     - assets/images/
     - assets/onboard/
     - assets/icons/
+    - assets/category/
 
   # fonts:
   #   - family:

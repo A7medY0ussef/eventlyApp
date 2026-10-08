@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +36,18 @@ class SplashScreen extends StatelessWidget {
             BounceInUp(
               delay: const Duration(seconds: 2),
               onFinish: (direction) {
-                Navigator.pushReplacementNamed(
-                  context,
-                  AppRoutes.onboardingScreen,
-                );
+                bool isLogin = FirebaseAuth.instance.currentUser != null;
+                if (isLogin) {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.layoutScreen,
+                  );
+                } else {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.onboardingScreen,
+                  );
+                }
               },
               child: isDark
                   ? Image.asset(

@@ -85,7 +85,7 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-// ==================== Light MODE STYLES Login & Register ====================
+  // ==================== Light MODE STYLES Login & Register ====================
 
   static TextStyle headTitleLightLR = GoogleFonts.poppins(
     fontSize: 24,
@@ -113,11 +113,7 @@ class AppStyles {
     color: AppColors.mainDarkColor,
   );
 
-
-
-
-
-// ==================== Light MODE STYLES Profile ====================
+  // ==================== Light MODE STYLES Profile ====================
 
   static TextStyle titleProfileOptionsLight = GoogleFonts.poppins(
     fontSize: 14,
@@ -136,7 +132,7 @@ class AppStyles {
     color: AppColors.greyColor,
   );
 
-// ==================== Dark MODE STYLES Profile ====================
+  // ==================== Dark MODE STYLES Profile ====================
 
   static TextStyle titleProfileOptionsDart = GoogleFonts.poppins(
     fontSize: 14,
@@ -154,5 +150,72 @@ class AppStyles {
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.whiteDarkColor,
+  );
+  // Light MODE STYLES Home ====================
+  static TextStyle homeMediumTitleLight = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.greyColor,
+  );
+  static TextStyle homeLargeTitleLight = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+  );
+  static TextStyle homeLargeTitleCardLight = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+  );
+
+  static TextStyle dateOfCardHomeLight = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.mainLightColor,
+  );
+
+  // ==================== Dark MODE STYLES Home ====================
+  static TextStyle homeMediumTitleDark = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.whiteColor,
+  );
+  static TextStyle homeLargeTitleDark = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.whiteColor,
+  );
+  static TextStyle homeLargeTitleCardDark = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.whiteColor,
+  );
+  static TextStyle dateOfCardHomeDark = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.mainDarkColor,
+  );
+  // ==================== Light MODE STYLES AddEvent ====================
+  static TextStyle headTitleLight = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blackColor,
+  );
+  static TextStyle hintTextLight = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Color(0xFF7B7B7B),
+  );
+  // ==================== Dark MODE STYLES AddEvent ====================
+  static TextStyle headTitleDark = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.whiteColor,
+  );
+
+  static TextStyle hintTextDark = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Color(0xFFD6D6D6),
   );
 }

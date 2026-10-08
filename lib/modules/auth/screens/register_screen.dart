@@ -273,7 +273,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         title: l10n.signup_googleButton,
                         onTap: () async {
                           try {
-                            final result = await AuthService().signInWithGoogle();
+                            final result = await AuthService()
+                                .signInWithGoogle();
                             if (result != null && context.mounted) {
                               Navigator.pushReplacementNamed(
                                 context,

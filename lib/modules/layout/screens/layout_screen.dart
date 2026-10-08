@@ -1,3 +1,4 @@
+import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/layout/screens/favorite_screen.dart';
 import 'package:evently/modules/layout/screens/home_screen.dart';
@@ -36,6 +37,21 @@ class _LayoutScreenState extends State<LayoutScreen> {
     final unselectedColor = isDark ? AppColors.whiteColor : AppColors.greyColor;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(360),
+        ),
+        backgroundColor: isDark
+            ? AppColors.mainDarkColor
+            : AppColors.mainLightColor,
+        foregroundColor: AppColors.whiteColor,
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.addEventScreen).then((value) {
+            setState(() {});
+          });
+        },
+        child: const Icon(Icons.add),
+      ),
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

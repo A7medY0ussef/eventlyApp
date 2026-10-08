@@ -13,6 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
+import 'modules/add_event/screens/add_event_screen.dart';
 import 'modules/auth/manager/auth_provider.dart';
 import 'modules/onboarding/screens/onboarding_screen.dart';
 import 'modules/splash/screens/splash_screen.dart';
@@ -54,6 +55,7 @@ class EventlyApp extends StatelessWidget {
         AppRoutes.registerScreen: (context) => const RegisterScreen(),
         AppRoutes.resetPasswordScreen: (context) => const ResetPasswordScreen(),
         AppRoutes.layoutScreen: (context) => const LayoutScreen(),
+        AppRoutes.addEventScreen: (context) => const AddEventScreen(),
       },
 
       localizationsDelegates: AppLocalizations.localizationsDelegates,
