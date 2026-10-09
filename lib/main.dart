@@ -3,6 +3,8 @@ import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/modules/auth/screens/login_screen.dart';
 import 'package:evently/modules/auth/screens/register_screen.dart';
 import 'package:evently/modules/auth/screens/reset_password_screen.dart';
+import 'package:evently/modules/details_event/screens/details_event_screen.dart';
+import 'package:evently/modules/edit_event/screens/edit_event_screen.dart';
 import 'package:evently/modules/layout/screens/layout_screen.dart';
 import 'package:evently/providers/app_language_provider.dart';
 import 'package:evently/providers/app_theme_provider.dart';

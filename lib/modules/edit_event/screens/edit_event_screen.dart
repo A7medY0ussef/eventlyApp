@@ -6,22 +6,26 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constant/app_category.dart';
+import '../../../core/models/event_model.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../layout/widgets/appbar_widgets/leading_widget.dart';
 import '../../layout/widgets/home_widgets/tap_widget.dart';
 
-class AddEventScreen extends StatelessWidget {
-  const AddEventScreen({super.key});
+class EditEventScreen extends StatelessWidget {
+  final EventModel event;
+
+  const EditEventScreen({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
     final isDark = Provider.of<AppThemeProvider>(context).isDark;
     final theme = Theme.of(context);
     return ChangeNotifierProvider(
-      create: (context) => EventProvider(),
+      create: (context) => EventProvider()..loadFromEvent(event),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Add Event',
+            'Edit Event',
             style: isDark ? AppStyles.headTitleDark : AppStyles.headTitleLight,
           ),
           leading: LeadingWidget(),
@@ -39,6 +43,7 @@ class AddEventScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   DefaultTabController(
+                    initialIndex: provider.index,
                     length: AppCategory.categories.length,
                     child: TabBar(
                       dividerColor: Colors.transparent,
@@ -108,13 +113,14 @@ class AddEventScreen extends StatelessWidget {
                         onTap: () {
                           showDatePicker(
                             context: context,
-                            initialDate: provider.selectedDateTime,
-                            firstDate: DateTime.now(),
-                            lastDate: DateTime.now().add(Duration(days: 365)),
+                            initialDate:
+                                provider.selectedDateTime ?? DateTime.now(),
+                            firstDate: DateTime(2020),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 365),
+                            ),
                           ).then((value) {
-                            if (value != null) {
-                              provider.changeDate(value);
-                            }
+                            if (value != null) provider.changeDate(value);
                           });
                         },
                         child: Text(
@@ -143,17 +149,14 @@ class AddEventScreen extends StatelessWidget {
                         onTap: () {
                           showTimePicker(
                             context: context,
-                            initialTime: TimeOfDay.now(),
+                            initialTime:
+                                provider.selectedTime ?? TimeOfDay.now(),
                           ).then((value) {
-                            if (value != null) {
-                              provider.selectedTime = value;
-                            }
+                            if (value != null) provider.changeTime(value);
                           });
                         },
                         child: Text(
-                          provider.selectedTime == null
-                              ? 'Choose Time'
-                              : provider.selectedTime!.format(context),
+                          provider.selectedTime?.format(context) ?? event.time,
                           style: theme.textTheme.titleMedium!.copyWith(
                             color: theme.primaryColor,
                             decoration: TextDecoration.underline,
@@ -166,9 +169,7 @@ class AddEventScreen extends StatelessWidget {
                   const SizedBox(height: 28),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {
-                        provider.addEvent(context);
-                      },
+                      onPressed: () => provider.updateEvent(context, event),
                       child: Center(
                         child: provider.isLoading
                             ? SizedBox(
@@ -177,7 +178,7 @@ class AddEventScreen extends StatelessWidget {
                                 child: CircularProgressIndicator(),
                               )
                             : Text(
-                                'Add Event',
+                                'Edit Event',
                                 style: isDark
                                     ? AppStyles.primaryButtonDark
                                     : AppStyles.primaryButtonLight,

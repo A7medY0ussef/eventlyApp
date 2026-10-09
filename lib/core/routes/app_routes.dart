@@ -8,4 +8,6 @@ class AppRoutes {
   static const String registerScreen = 'register_screen';
   static const String resetPasswordScreen = 'reset_password_screen';
   static const String addEventScreen = 'add_event_screen';
+  static const String detailsEventScreen = 'details_event_screen';
+  static const String editEventScreen = 'edit_event_screen';
 }

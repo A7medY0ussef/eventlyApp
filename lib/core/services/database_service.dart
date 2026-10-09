@@ -6,9 +6,9 @@ class DatabaseService {
   static final firebase = FirebaseFirestore.instance;
 
   static Future<void> addEvent(EventModel event) async {
-    var doc = await firebase.collection('Events').doc();
+    var doc = firebase.collection('Events').doc();
     event.id = doc.id;
-    doc.set(event.toJson());
+    await doc.set(event.toJson());
   }
 
   static Future<List<EventModel>> getEvents() async {
@@ -20,14 +20,28 @@ class DatabaseService {
     }
     return events;
   }
-  static Future<void> toggleFav(EventModel event)async{
+
+  static Future<void> toggleFav(EventModel event) async {
     var userId = FirebaseAuth.instance.currentUser!.uid;
     if (event.usersFav.contains(userId)) {
       event.usersFav.remove(userId);
-    }  else{
+    } else {
       event.usersFav.add(userId);
     }
     await firebase.collection('Events').doc(event.id).update(event.toJson());
+  }
 
+  static Future<void> deleteEvent(String eventId) async {
+    await firebase.collection('Events').doc(eventId).delete();
+  }
+
+  static Future<void> updateEvent(EventModel event) async {
+    await firebase.collection('Events').doc(event.id).update({
+      'title': event.title,
+      'desc': event.desc,
+      'categoryId': event.categoryId,
+      'date': event.date,
+      'time': event.time,
+    });
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:evently/core/constant/app_category.dart';
 import 'package:evently/core/models/event_model.dart';
 import 'package:evently/core/theme/app_colors.dart';

@@ -45,4 +45,41 @@ class EventProvider extends ChangeNotifier {
     notifyListeners();
     Navigator.pop(context);
   }
+
+  void loadFromEvent(EventModel event) {
+    titleController.text = event.title;
+    descriptionController.text = event.desc;
+    selectedDateTime = DateTime.tryParse(event.date);
+
+    final i = AppCategory.categories.indexWhere(
+      (c) => c.id == event.categoryId,
+    );
+    index = i < 0 ? 0 : i;
+    selectedCategory = AppCategory.categories[index];
+  }
+
+  Future<void> updateEvent(BuildContext context, EventModel old) async {
+    isLoading = true;
+    notifyListeners();
+
+    final updated = EventModel(
+      id: old.id,
+      userId: old.userId,
+      usersFav: old.usersFav,
+      title: titleController.text,
+      desc: descriptionController.text,
+      categoryId: selectedCategory.id,
+      date: selectedDateTime?.toString() ?? old.date,
+      time: selectedTime?.format(context) ?? old.time,
+    );
+
+    await DatabaseService.updateEvent(updated);
+    isLoading = false;
+    notifyListeners();
+
+    if (context.mounted) {
+      Navigator.pop(context);
+      Navigator.pop(context);
+    }
+  }
 }
