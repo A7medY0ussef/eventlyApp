@@ -115,11 +115,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            FutureBuilder(
-              future: DatabaseService.getEvents(),
+            StreamBuilder<List<EventModel>>(
+              stream: DatabaseService.getEventsStream(
+                index == 0 ? null : AppCategory.categories[index - 1].id,
+              ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
                 } else {
@@ -129,19 +131,47 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return CardWidget(
                           event: events[index],
-                          onTapFav: () async{
+                          onTapFav: () async {
                             await DatabaseService.toggleFav(events[index]);
-                            setState(() {});
                           },
                         );
                       },
-                      separatorBuilder: (context, index) => SizedBox(height: 8),
+                      separatorBuilder: (context, index) => const SizedBox(height: 8),
                       itemCount: events.length,
                     ),
                   );
                 }
               },
             ),
+            // FutureBuilder(
+            //   future: DatabaseService.getEvents(
+            //     index == 0 ? null : AppCategory.categories[index - 1].id,
+            //   ),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.connectionState == ConnectionState.waiting) {
+            //       return Center(child: CircularProgressIndicator());
+            //     } else if (snapshot.hasError) {
+            //       return Center(child: Text(snapshot.error.toString()));
+            //     } else {
+            //       List<EventModel> events = snapshot.data ?? [];
+            //       return Expanded(
+            //         child: ListView.separated(
+            //           itemBuilder: (context, index) {
+            //             return CardWidget(
+            //               event: events[index],
+            //               onTapFav: () async {
+            //                 await DatabaseService.toggleFav(events[index]);
+            //                 setState(() {});
+            //               },
+            //             );
+            //           },
+            //           separatorBuilder: (context, index) => SizedBox(height: 8),
+            //           itemCount: events.length,
+            //         ),
+            //       );
+            //     }
+            //   },
+            // ),
           ],
         ),
       ),

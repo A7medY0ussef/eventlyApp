@@ -11,9 +11,41 @@ class DatabaseService {
     await doc.set(event.toJson());
   }
 
-  static Future<List<EventModel>> getEvents() async {
+  static Future<List<EventModel>> getEvents(String? categoryId) async {
     List<EventModel> events = [];
-    var data = await firebase.collection('Events').get();
+    Query<Map<String, dynamic>> query = firebase.collection('Events');
+
+    if (categoryId != null) {
+      query = query.where('categoryId', isEqualTo: categoryId);
+    }
+
+    var data = await query.get();
+
+    for (var e in data.docs) {
+      events.add(EventModel.fromJson(e.data()));
+    }
+    return events;
+  }
+
+  static Stream<List<EventModel>> getEventsStream(String? categoryId) {
+    Query<Map<String, dynamic>> query = firebase.collection('Events');
+
+    if (categoryId != null) {
+      query = query.where('categoryId', isEqualTo: categoryId);
+    }
+
+    return query.snapshots().map((snapshot) {
+      return snapshot.docs.map((e) => EventModel.fromJson(e.data())).toList();
+    });
+  }
+
+  static Future<List<EventModel>> getFavEvents() async {
+    var userId = FirebaseAuth.instance.currentUser!.uid;
+    List<EventModel> events = [];
+    var data = await firebase
+        .collection('Events')
+        .where('userFav', arrayContains: userId)
+        .get();
     for (var e in data.docs) {
       var event = EventModel.fromJson(e.data());
       events.add(event);
